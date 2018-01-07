@@ -8,12 +8,12 @@ const config = {
   target: 'node',
 
   // Tell webpack the root file of the server application
-  entry: './src/index.js',
+  entry: './src/server/index.js',
 
   // Tell webpack where to put the output file
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(__dirname, '..', 'build')
   },
 
   // Tells webpack to not bundle any libraries into output server-side bundle if that library exists inside the node modules folder, which speeds webpack by reducing bundle size
