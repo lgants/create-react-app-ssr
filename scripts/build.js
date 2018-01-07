@@ -36,17 +36,17 @@ const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
 const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+if (!checkRequiredFiles([paths.client.html, paths.client.root])) {
   process.exit(1);
 }
 
 // First, read the current file sizes in build directory.
 // This lets us display how much they changed later.
-measureFileSizesBeforeBuild(paths.appBuild)
+measureFileSizesBeforeBuild(paths.client.build)
   .then(previousFileSizes => {
     // Remove all content but keep the directory so that
     // if you're in it, you don't end up in Trash
-    fs.emptyDirSync(paths.appBuild);
+    fs.emptyDirSync(paths.client.build);
     // Merge with the public folder
     copyPublicFolder();
     // Start the webpack build
@@ -75,16 +75,16 @@ measureFileSizesBeforeBuild(paths.appBuild)
       printFileSizesAfterBuild(
         stats,
         previousFileSizes,
-        paths.appBuild,
+        paths.client.build,
         WARN_AFTER_BUNDLE_GZIP_SIZE,
         WARN_AFTER_CHUNK_GZIP_SIZE
       );
       console.log();
 
-      const appPackage = require(paths.appPackageJson);
-      const publicUrl = paths.publicUrl;
+      const appPackage = require(paths.packageJson);
+      const publicUrl = paths.client.publicUrl;
       const publicPath = config.output.publicPath;
-      const buildFolder = path.relative(process.cwd(), paths.appBuild);
+      const buildFolder = path.relative(process.cwd(), paths.client.build);
       printHostingInstructions(
         appPackage,
         publicUrl,
@@ -143,8 +143,8 @@ function build(previousFileSizes) {
 }
 
 function copyPublicFolder() {
-  fs.copySync(paths.appPublic, paths.appBuild, {
+  fs.copySync(paths.client.public, paths.client.build, {
     dereference: true,
-    filter: file => file !== paths.appHtml,
+    filter: file => file !== paths.client.html,
   });
 }
