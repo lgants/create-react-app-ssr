@@ -10,7 +10,7 @@
 
 
 // Startup point for the app in the browser
-import 'babel-polyfill';
+// import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';

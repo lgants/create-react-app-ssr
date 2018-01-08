@@ -6,7 +6,9 @@ const url = require('url');
 
 // Make sure any symlinks in the project folder are resolved:
 const appDirectory = fs.realpathSync(process.cwd());
-const resolvePath = relativePath => path.resolve(appDirectory, relativePath);
+const resolvePath = relativePath => {
+  return path.resolve(appDirectory, relativePath);
+}
 
 const envPublicUrl = process.env.PUBLIC_URL;
 
@@ -34,14 +36,13 @@ function getServedPath(packageJson) {
   return ensureSlash(servedUrl, true);
 }
 
-// config after eject: we're in ./config/
 module.exports = {
   dotenv: resolvePath('.env'),
   nodeModules: resolvePath('node_modules'),
   yarnLockFile: resolvePath('yarn.lock'),
   packageJson: resolvePath('package.json'),
   client: {
-    build: resolvePath('build'),
+    build: resolvePath('build/client'),
     public: resolvePath('public'),
     html: resolvePath('public/index.html'),
     root: resolvePath('src/client/index.js'),
@@ -51,8 +52,7 @@ module.exports = {
     servedPath: getServedPath(resolvePath('package.json'))
   },
   server: {
-    build: resolvePath('build'),
-    public: resolvePath('public'),
+    build: resolvePath('build/server'),
     root: resolvePath('src/server/index.js'),
     src: resolvePath('src/server'),
     testsSetup: resolvePath('src/server/setupTests.js'),
