@@ -103,5 +103,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "chokidar": "^2.0.0"
   }
 }
