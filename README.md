@@ -8,3 +8,6 @@ The project started in early-January 2018. So, relatively new and contributions 
 -Refactor scripts to remove nodemon dependency in package.json
 -Fix ports so npm run dev command doesn't prompt user to start client on another port
 -Write tests
+
+
+Please be aware the project is under active development and is NOT currently fully functional
