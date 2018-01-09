@@ -30,6 +30,8 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "nodemon": "^1.14.9",
+    "npm-run-all": "^4.1.2",
     "object-assign": "4.1.1",
     "path": "^0.12.7",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -56,11 +58,13 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
-    "dev:build-server": "webpack --config config/webpack.server.js --watch"
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:client": "node scripts/start.js",
+    "prod:client": "node scripts/build.js",
+    "dev:server": "NODE_ENV=development nodemon --watch build/server --exec \"node build/server/bundle.js\"",
+    "dev:build-server": "NODE_ENV=development webpack --config config/webpack.config.server.dev.js --watch",
+    "prod:server": "node scripts/server.js",
+    "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
     "collectCoverageFrom": [

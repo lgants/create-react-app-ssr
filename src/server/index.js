@@ -17,7 +17,9 @@ app.use('/api', proxy('http://react-ssr-api.herokuapp.com', {
     return opts;
   }
 }));
-// app.use(express.static('public'))
+
+app.use(express.static('build/server'));
+
 app.get('*', (req, res) => {
   // Create store outside renderer
   const store = createStore(req);
@@ -51,6 +53,22 @@ app.get('*', (req, res) => {
 
   })
 });
+
+// var env = process.env.NODE_ENV === 'development';
+
+if (process.env.NODE_ENV === "development") {
+  var chokidar = require('chokidar')
+  var watcher = chokidar.watch('../src/server')
+  watcher.on('ready', function() {
+    watcher.on('all', function() {
+      console.log("Clearing /dist/ module cache from server")
+      Object.keys(require.cache).forEach(function(id) {
+        if (/[\/\\]dist[\/\\]/.test(id)) delete require.cache[id]
+      })
+    })
+  })
+}
+
 
 app.listen(3000, () => {
   console.log('Listening on port 3000');

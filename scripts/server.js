@@ -1,6 +1,3 @@
-// FOR SERVER BUILD
-
-
 'use strict';
 
 // Do this as the first thing so that any code reading it knows the right env.
@@ -19,7 +16,7 @@ const path = require('path');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 const webpack = require('webpack');
-const config = require('../config/webpack.server.js');
+const config = require('../config/webpack.config.server.prod.js');
 const paths = require('../config/paths.js');
 
 // const paths = {
