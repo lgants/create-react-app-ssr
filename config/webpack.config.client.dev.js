@@ -35,12 +35,11 @@ module.exports = {
   entry: [
     // We ship a few polyfills by default:
     require.resolve('./polyfills'),
-    // Include an alternative client for WebpackDevServer. A client's job is to
-    // connect to WebpackDevServer by a socket and get notified about changes.
+    // Include an alternative client for WebpackDevServer. A client's job is to connect to WebpackDevServer by a socket and get notified about changes.
     // When you save a file, the client will either apply hot updates (in case of CSS changes), or refresh the page (in case of JS changes). When you make a syntax error, this client will display a syntax error overlay.
     // Note: instead of the default WebpackDevServer client, we use a custom one to bring better experience for Create React App users. You can replace the line below with these two lines if you prefer the stock client:
     // 'webpack-dev-server/client?http://' + require("os").hostname() + ':3001/',
-    require.resolve('webpack-dev-server/client') + '?/', 
+    require.resolve('webpack-dev-server/client') + '?http://localhost:3000/',
     require.resolve('webpack/hot/dev-server'),
     // require.resolve('react-dev-utils/webpackHotDevClient'),
     // Finally, this is your app's code:
@@ -211,6 +210,14 @@ module.exports = {
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
+  // devServer: {
+  //   proxy: {
+  //     '**': {
+  //       target: 'https://other-server.example.com',
+  //       secure: false
+  //     }
+  //   }
+  // },
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
   node: {

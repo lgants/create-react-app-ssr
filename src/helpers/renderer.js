@@ -27,7 +27,7 @@ export default (req, store, context) => {
         <script>
           window.INITIAL_STATE = ${serialize(store.getState())}
         </script>
-        <script src="http://localhost:3001/static/js/bundle.js"></script>
+        <script src="http://localhost:3000/static/js/bundle.js"></script>
       </body>
     </html>
   `
