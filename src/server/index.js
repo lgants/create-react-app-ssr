@@ -7,7 +7,7 @@ import renderer from '../helpers/renderer';
 import createStore from '../helpers/createStore';
 
 const app = express();
-
+const port = process.env.PORT || 5000;
 
 // Use proxy to setup cookies with renderer server rather than the API because cookies are tied to a specific domain (i.e. tricks browser since it doesn't see what happens past the proxy)
 app.use('/api', proxy('http://react-ssr-api.herokuapp.com', {
@@ -69,7 +69,6 @@ if (process.env.NODE_ENV === "development") {
   })
 }
 
-
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
+app.listen(port, () => {
+  console.log('Listening on port ' + port);
 });
