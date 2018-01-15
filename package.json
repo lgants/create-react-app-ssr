@@ -5,11 +5,13 @@
   "dependencies": {
     "autoprefixer": "7.1.6",
     "axios": "^0.17.1",
+    "babel-cli": "^6.26.0",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
     "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react-app": "^3.1.0",
     "babel-runtime": "6.26.0",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
@@ -59,11 +61,10 @@
   },
   "scripts": {
     "dev": "npm-run-all --parallel dev:*",
-    "dev:client": "node scripts/start.js",
-    "prod:client": "node scripts/build.js",
-    "dev:server": "NODE_ENV=development nodemon --watch build/server --exec \"node build/server/bundle.js\"",
-    "dev:build-server": "NODE_ENV=development webpack --config config/webpack.config.server.dev.js --watch",
-    "prod:server": "node scripts/server.js",
+    "dev:client": "node scripts/client.start.js",
+    "prod:client": "node scripts/client.build.js",
+    "dev:server": "node scripts/server.start.js && nodemon --watch build/server --exec \"node build/server/bundle.js\"",
+    "prod:server": "node scripts/server.build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
