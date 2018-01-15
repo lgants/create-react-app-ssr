@@ -14,10 +14,6 @@ export default [
         exact: true
       },
       {
-        ...Home,
-        path: '/ello',
-      },
-      {
         ...NotFound
       }
     ]

@@ -55,19 +55,19 @@ app.get('*', (req, res) => {
 });
 
 // var env = process.env.NODE_ENV === 'development';
-
-if (process.env.NODE_ENV === "development") {
-  var chokidar = require('chokidar')
-  var watcher = chokidar.watch('../src/server')
-  watcher.on('ready', function() {
-    watcher.on('all', function() {
-      console.log("Clearing /dist/ module cache from server")
-      Object.keys(require.cache).forEach(function(id) {
-        if (/[\/\\]dist[\/\\]/.test(id)) delete require.cache[id]
-      })
-    })
-  })
-}
+//
+// if (process.env.NODE_ENV === "development") {
+//   var chokidar = require('chokidar')
+//   var watcher = chokidar.watch('../src')
+//   watcher.on('ready', function() {
+//     watcher.on('all', function() {
+//       console.log("Clearing /dist/ module cache from server")
+//       Object.keys(require.cache).forEach(function(id) {
+//         if (/[\/\\]dist[\/\\]/.test(id)) delete require.cache[id]
+//       })
+//     })
+//   })
+// }
 
 app.listen(port, () => {
   console.log('Listening on port ' + port);
