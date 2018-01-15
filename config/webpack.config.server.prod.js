@@ -1,6 +1,6 @@
 const path = require('path');
 const paths = require('./paths');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
+const webpack = require('webpack');
 
 module.exports = {
   target: 'node',
