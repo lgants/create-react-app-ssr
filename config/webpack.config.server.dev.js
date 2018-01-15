@@ -1,24 +1,36 @@
 const path = require('path');
-const merge = require('webpack-merge');
-const baseConfig = require('./webpack.config.server.base.js');
-const webpackNodeExternals = require('webpack-node-externals');
 const paths = require('./paths');
+const eslintFormatter = require('react-dev-utils/eslintFormatter');
 
-const config = {
-  // Inform webpack to build a bundle for nodeJS, rather than for the browser
+module.exports = {
   target: 'node',
-
-  // Tell webpack the root file of the server application
   entry: paths.server.root,
-
-  // Tell webpack where to put the output file
   output: {
     filename: 'bundle.js',
     path: paths.server.build
   },
-
-  // Tells webpack to not bundle any libraries into output server-side bundle if that library exists inside the node modules folder, which speeds webpack by reducing bundle size
-  externals: [webpackNodeExternals()]
+  resolve: {
+    modules: ['node_modules', paths.nodeModules].concat(
+      process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
+    ),
+    extensions: ['.js'],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js?$/,
+        exclude: /node_modules/,
+        loader: require.resolve('babel-loader'),
+        options: {
+          presets: [
+            'react',
+            'es2015'
+          ],
+          // This is a feature of `babel-loader` for webpack (not Babel itself).
+          // It enables caching results in ./node_modules/.cache/babel-loader/ directory for faster rebuilds.
+          cacheDirectory: true,
+        }
+      }
+    ],
+  }
 };
-
-module.exports = merge(baseConfig, config);

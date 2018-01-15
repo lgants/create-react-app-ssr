@@ -21,8 +21,7 @@ const publicPath = paths.client.servedPath;
 const shouldUseRelativeAssetPaths = publicPath === './';
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
-// `publicUrl` is just like `publicPath`, but we will provide it to our app
-// as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
+// `publicUrl` is just like `publicPath`, but we will provide it to our app as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
 const publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
@@ -38,7 +37,6 @@ if (env.stringified['process.env'].NODE_ENV !== '"production"') {
 const cssFilename = 'static/css/[name].[contenthash:8].css';
 
 // ExtractTextPlugin expects the build output to be flat.
-// (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
 // However, our output is structured with css, js and media folders.
 // To have this structure working with relative paths, we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
@@ -138,7 +136,6 @@ module.exports = {
             include: paths.client.src,
             loader: require.resolve('babel-loader'),
             options: {
-
               compact: true,
             },
           },
@@ -198,8 +195,7 @@ module.exports = {
           // This loader doesn't use a "test" so it will catch all modules that fall through the other loaders.
           {
             loader: require.resolve('file-loader'),
-            // Exclude `js` files to keep "css" loader working as it injects
-            // it's runtime that would otherwise processed through "file" loader.
+            // Exclude `js` files to keep "css" loader working as it injects it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed by webpacks internal loaders.
             exclude: [/\.js$/, /\.html$/, /\.json$/],
             options: {
