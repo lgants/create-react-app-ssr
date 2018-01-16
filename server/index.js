@@ -55,7 +55,6 @@ app.get('*', (req, res) => {
 });
 
 // var env = process.env.NODE_ENV === 'development';
-//
 // if (process.env.NODE_ENV === "development") {
 //   var chokidar = require('chokidar')
 //   var watcher = chokidar.watch('../src')

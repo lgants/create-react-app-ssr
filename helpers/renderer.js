@@ -15,8 +15,6 @@ export default (req, store, context) => {
     </Provider>
   );
 
-  // console.log(renderRoutes(Routes))
-
   return `
     <html>
       <head>
