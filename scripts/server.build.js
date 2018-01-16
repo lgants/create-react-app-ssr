@@ -10,7 +10,7 @@ process.on('unhandledRejection', err => {
 });
 
 // Ensure environment variables are read.
-require('../config/ServerEnv.js');
+require('../config/env.js');
 
 const path = require('path');
 const chalk = require('chalk');
