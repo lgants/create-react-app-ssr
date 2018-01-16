@@ -4,7 +4,7 @@ import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
-import Routes from '../client/Routes';
+import Routes from '../client/src/Routes';
 
 export default (req, store, context) => {
   const content = renderToString(

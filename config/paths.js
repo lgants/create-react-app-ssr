@@ -43,18 +43,18 @@ module.exports = {
   packageJson: resolvePath('package.json'),
   client: {
     build: resolvePath('build/client'),
-    public: resolvePath('public'),
-    html: resolvePath('public/index.html'),
-    root: resolvePath('src/client/index.js'),
-    src: resolvePath('src/client'),
-    testsSetup: resolvePath('src/client/setupTests.js'),
+    public: resolvePath('client/public'),
+    html: resolvePath('client/public/index.html'),
+    root: resolvePath('client/src/index.js'),
+    src: resolvePath('client/src'),
+    testsSetup: resolvePath('client/src/setupTests.js'),
     publicUrl: getPublicUrl(resolvePath('package.json')),
     servedPath: getServedPath(resolvePath('package.json'))
   },
   server: {
     build: resolvePath('build/server'),
-    root: resolvePath('src/server/index.js'),
-    src: resolvePath('src/server'),
-    testsSetup: resolvePath('src/server/setupTests.js'),
+    root: resolvePath('server/index.js'),
+    src: resolvePath('server'),
+    testsSetup: resolvePath('server/setupTests.js'),
   }
 };

@@ -2,7 +2,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import axios from 'axios';
-import reducers from '../client/reducers';
+import reducers from '../client/src/reducers';
 
 export default (req) => {
   // Use empty string if header is undefined; requests with undefined header will crash
