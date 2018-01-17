@@ -63,7 +63,8 @@
     "dev": "npm-run-all --parallel dev:*",
     "dev:client": "node scripts/client.start.js",
     "prod:client": "node scripts/client.build.js",
-    "dev:server": "node scripts/server.start.js && nodemon --watch build/server --exec \"node build/server/bundle.js\"",
+    "dev:server": "nodemon --watch ./ --exec \"node build/server/bundle.js\"",
+    "dev:build-server": "NODE_ENV=development webpack --config config/webpack.config.server.dev.js --watch",
     "prod:server": "node scripts/server.build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
