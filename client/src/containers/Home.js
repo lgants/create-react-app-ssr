@@ -3,7 +3,7 @@ import React from 'react';
 const Home = ({ staticContext = {} }) => {
   return (
     <div>
-      <h3>Welcome Home has</h3>
+      <h3>Welcome Home Yddo</h3>
     </div>
   );
 };
